@@ -1,0 +1,6 @@
+Primary: #f5a11a
+Secondary: #f67020
+
+Dim: #321e00
+Black: #000000
+White: #ffffff
