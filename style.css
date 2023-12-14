@@ -2,21 +2,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-body{
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--dim);
-  color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-h1{
-  font-size: 0;
-  user-select: none;
+  scroll-behavior: smooth;
+  /* outline: red solid 1px; */
 }
 
 :root{
@@ -25,4 +12,124 @@ h1{
   --dim: #321e00;
   --black: #000000;
   --white: #ffffff; 
+  --font-title: 'Roboto', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
 }
+
+body{
+  background-color: var(--dim);
+  color: var(--white);
+}
+
+body::-webkit-scrollbar{
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track{
+background: var(--secondary);
+}
+
+body::-webkit-scrollbar-thumb{
+background: var(--primary);
+}
+
+.card{
+  margin-bottom: 9rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-title{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+
+  & img{
+    width: 100px;
+    height: auto;
+  }
+  
+  & h1{
+    font-family: var(--font-title);
+    user-select: none;
+  }
+}
+
+
+.carousel{
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 12px 5px rgba(0,0,0,0.28); 
+  box-shadow: 0px 0px 12px 5px rgba(0,0,0,0.28);
+}
+
+.carousel > img{
+  max-width: 100%;
+  height: auto;
+  opacity: 0.5;
+  animation: autoscroll 15s ease-in-out infinite;
+}
+
+@keyframes autoscroll{
+  0%{
+    transform: translateX(0);
+  }
+  25%{
+    transform: translateX(-100%);
+  }
+  50%{
+    transform: translateX(-200%);
+  }
+  75%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+
+.description {
+  margin: 1rem;
+  padding: 1rem;
+  text-align: justify;
+  font-size: 1.2em;
+  background-color: var(--secondary);
+  border-radius: 5px;
+}
+
+.social-media{
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+
+  & img{
+    width: 50px;
+    height: auto;
+  }
+
+  & a{
+    display: block;
+    width: 48px;
+    aspect-ratio: 1/1;
+    background-size: contain;
+  }
+
+  #Instagram{
+    background-image: url("assets/Instagram_icon.png");
+  }
+
+  #LinkedIn{
+    background-image: url("assets/LinkedIn_logo.png");
+  }
+
+  #Facebook{
+    background-image: url("assets/Facebook_Logo.png");
+  }
+}
+
