@@ -39,7 +39,6 @@ window.addEventListener('scroll', () => {
   }
 
 
-  console.log(img2_translateX);
   img1.style.transform = `translateX(${img1_translateX}%)`;
   img2.style.transform = `translateX(${img2_translateX}%)`;
   img3.style.transform = `translateX(${img3_translateX}%)`;
