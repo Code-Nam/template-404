@@ -6,60 +6,114 @@
   outline: red solid 1px;
 }
 
-:root{
-  --primary: #f5a11a;
-  --secondary: #f67020;
-  --dim: #321e00;
-  --black: #000000;
-  --white: #ffffff; 
-  --font-title: 'Roboto', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
+@font-face {
+	font-family: textFont;
+	src: url('https://static.tumblr.com/9ckjyzo/xa0oiaf8a/franklin_gothic_demi_cond_regular.ttf');
+}
+
+@font-face {
+	font-family: logoFont;
+	src: url('https://static.tumblr.com/9ckjyzo/3qDoiaf7i/starjhol.ttf');
 }
 
 body{
-  background-color: var(--black);
-  color: var(--white);
+  padding: 0;
+  margin: 0;
+	min-height: 100vh;
+  font-family: textFont;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  box-sizing: border-box;
+  background-color: black;
 }
 
-body::-webkit-scrollbar{
-  width: 0.25rem;
+body > *{
+  position: absolute;
 }
 
-body::-webkit-scrollbar-track{
-  background: var(--secondary);
+:root{
+  --primary: #f5a11a;
+  --secondary: #f67020;
 }
-
-body::-webkit-scrollbar-thumb{
-  background: var(--primary);
-}
-
-.scrollable-img{
-  width: 100vw;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  
-  & > img{
-    width: 100%;
-    height: auto;
-
-    &:nth-child(1){
-      position: sticky;
-      top: 0;
-    }
-  }
-} 
 
 .title{
-  text-align: center;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  font-size: 1.5rem;
+	background-color: black;
 
-  & img{
-    width: 100px;
+  @media screen and (max-width: 480px) {
+    font-size: 1rem;
+  }
+}
+
+.logo{
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  & > img{
+    width: 100%;
+    max-width: 300px;
     height: auto;
   }
-  
-  & h1{
-    font-family: var(--font-title);
-    user-select: none;
+}
+
+.hide{
+  display: none;
+}
+
+.fade-out{
+  animation: fade-out 1s forwards;
+
+}
+
+@keyframes fade-out{
+  0%{
+    opacity: 1;
   }
+  100%{
+    opacity: 0;
+  }
+}
+
+.shrink{
+  animation: shrink 4s forwards;
+}
+
+@keyframes shrink{
+	0% {
+		transform: scale(3);
+	}
+	60% {
+		opacity: 1;
+	}
+	100% {
+		transform: scale(0.1);
+		opacity: 0;
+	}
+}
+
+.text-whopper{
+  height: 100%;
+  max-height: 80vh;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  perspective: 100px;
+  overflow-x: hidden;
+}
+
+.text-content{
+  color: var(--secondary);
+  text-align: justify;
+	max-width: 50%;
 }
