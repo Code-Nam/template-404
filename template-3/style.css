@@ -3,7 +3,6 @@
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  outline: red solid 1px;
 }
 
 @font-face {
@@ -104,16 +103,35 @@ body > *{
 
 .text-whopper{
   height: 100%;
+  width: 100%;
   max-height: 80vh;
   bottom: 0;
   display: flex;
   justify-content: center;
   perspective: 100px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .text-content{
+  h2{
+    text-align: center;
+  }
+
+  a:visited, a:link{
+    color: var(--secondary);
+  }
+
+  & > img{
+    width: 100%;
+    height: auto;
+  }
+
+  position: absolute;
   color: var(--secondary);
+  transform-origin: center;
+  transform: rotateX(15deg) translateY(100%);
   text-align: justify;
-	max-width: 50%;
+  height: 100%;
+  width: 30%;
+  transition: transform 0.5s;
 }
