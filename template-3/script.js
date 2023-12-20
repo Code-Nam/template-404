@@ -9,6 +9,7 @@ const MIN_SCROLL = -75;
 
 let currentScroll = 80;
 let scrollEnabled = false;
+let scrollControlEnabled = false;
 
 /**
  * Update text scroll
@@ -20,14 +21,6 @@ const updateScroll = (textScroll) => {
 
 // STARTUP SEQUENCE
 
-/**
- * Enable text scroll
- */
-const enableScroll = () => {
-  scrollEnabled = true;
-  updateScroll(currentScroll);
-};
-
 // Start timeline
 setTimeout(() => {
   // Fade out title
@@ -36,10 +29,10 @@ setTimeout(() => {
     // Play theme and show logo
     theme.play();
     logo.classList.remove('hide');
+    scrollEnabled = true;
     setTimeout(() => {
-      // Enable text scroll
-      enableScroll();
-    }, 1000);
+      scrollControlEnabled = true;
+    }, 2500);
   }, 1000);
 }, 2000);
 
@@ -63,7 +56,7 @@ setInterval(loopScroll, 100);
  * Scroll text manually on mouse wheel
  */
 window.addEventListener('wheel', (e) => {
-  if (scrollEnabled) {
+  if (scrollControlEnabled) {
     currentScroll -= e.deltaY * 0.05;
     if (currentScroll > MAX_SCROLL) currentScroll = MAX_SCROLL;
     if (currentScroll < MIN_SCROLL) currentScroll = MIN_SCROLL;
@@ -77,13 +70,13 @@ window.addEventListener('wheel', (e) => {
 let touchStart = 0;
 
 window.addEventListener('touchstart', (e) => {
-  if (scrollEnabled) {
+  if (scrollControlEnabled) {
     touchStart = e.touches[0].clientY;
   }
 });
 
 window.addEventListener('touchmove', (e) => {
-  if (scrollEnabled) {
+  if (scrollControlEnabled) {
     let touchEnd = e.touches[0].clientY;
     currentScroll -= (touchStart - touchEnd) * 0.05;
     if (currentScroll > MAX_SCROLL) currentScroll = MAX_SCROLL;
