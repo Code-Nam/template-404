@@ -5,7 +5,7 @@ const theme = new Audio('../assets/audio/theme.mp3');
 theme.volume = 0.5;
 
 const MAX_SCROLL = 80;
-const MIN_SCROLL = -75;
+const MIN_SCROLL = -175;
 
 let currentScroll = 80;
 let scrollEnabled = false;
